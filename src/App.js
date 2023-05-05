@@ -1,27 +1,16 @@
 import React from "react";
 import "./App.css";
-import { useSelector, useDispatch } from "react-redux";
-import { actions } from "./store/index";
+import Auth from "./components/Auth";
+import Layout from "./components/Layout";
+import { useSelector } from "react-redux";
 
 function App() {
-  const counter = useSelector((state) => state.counter);
-  const dispatch = useDispatch();
-  const increment = () => {
-    dispatch(actions.increment());
-  };
-  const decrement = () => {
-    dispatch(actions.decrement());
-  };
-  const addBy = () => {
-    dispatch(actions.addBy(10));
-  };
+  const isLogedIn = useSelector((state) => state.auth.isLogedIn);
+
   return (
     <div className="App">
-      <h1>Counter App</h1>
-      <p>{counter}</p>
-      <button onClick={increment}>+</button>
-      <button onClick={decrement}>-</button>
-      <button onClick={addBy}>Add By 10</button>
+      {!isLogedIn && <Auth />}
+      {isLogedIn && <Layout />}
     </div>
   );
 }

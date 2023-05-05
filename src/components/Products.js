@@ -1,5 +1,6 @@
 import React from "react";
 import Product from "./Product";
+// import { useSelector } from "react-redux";
 const DUMMY_PRODUCTS = [
   {
     id: 1,
