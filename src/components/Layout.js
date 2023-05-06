@@ -6,7 +6,9 @@ import { useSelector } from "react-redux";
 import CartItem from "./CartItems";
 
 const Layout = () => {
-  let total = 100;
+  let total = 0;
+  const cartItems = useSelector((state) => state.cart.itemsList);
+  cartItems.forEach((item) => (total += item.totalPrice));
 
   const showCartItems = useSelector((state) => state.cart.showCart);
   return (
